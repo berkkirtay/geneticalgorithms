@@ -8,7 +8,7 @@ In this project, I tried to apply selective breeding principle to my program. Th
 - Moreover, you can observe analysis of these solutions in test scripts. 
 
 ### TSP with 500 cities and 50000 breeding cycles
-![Enc1](https://github.com/berkkirtay/geneticalgorithms/tree/main/examples/TSP.PNG)
+![Enc1](https://raw.githubusercontent.com/berkkirtay/geneticalgorithms/main/examples/TSP.PNG)
 
 ### Knapsack with 100 items
-![Enc1](https://github.com/berkkirtay/geneticalgorithms/tree/main/examples/Knapsack.PNG)
+![Enc1](https://raw.githubusercontent.com/berkkirtay/geneticalgorithms/main/examples/Knapsack.PNG)
