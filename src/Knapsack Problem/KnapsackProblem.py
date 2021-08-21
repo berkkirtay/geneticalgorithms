@@ -11,7 +11,8 @@ class KnapsackGeneticAlgorithm():
         self.knapsackSample = knapsackSample
         self.population = knapsackSample.population
         self.sampleImport(knapsackSample.weights,
-                          knapsackSample.itemValues, knapsackSample.maxWeight)
+                          knapsackSample.itemValues,
+                          knapsackSample.maxWeight)
 
     def sampleImport(self, weights, itemValues, maxWeight):
         self.weights = weights
@@ -110,7 +111,7 @@ class Selection(KnapsackGeneticAlgorithm):
 
     def crossover(self, chromosome1, chromosome2):
         chromosomeLenght = len(chromosome1)
-        for i in range(math.floor(chromosomeLenght / 2)):
+        for i in range(math.floor(chromosomeLenght / 5)):
             randomIndex = random.randint(0, chromosomeLenght - 1)
             swapGenes(chromosome1, chromosome2, randomIndex)
 
@@ -150,7 +151,7 @@ class Mutation:
 
     def igniteMutation(self, chromosome):
         tempChromosome = chromosome
-        if random.randint(0, 100) < 50:
+        if random.randint(0, 100) < 60:
             tempChromosome = self.mutationCycle(chromosome).copy()
 
         return tempChromosome
@@ -162,9 +163,11 @@ class Mutation:
         randomIndex1 = random.randint(0, chromosomeLenght - 2)
         randomIndex2 = random.randint(0, chromosomeLenght - 2)
 
-        tempGene = tempChromosome[randomIndex1]
-        tempChromosome[randomIndex1] = tempChromosome[randomIndex2]
-        tempChromosome[randomIndex2] = tempGene
+     #   tempGene = tempChromosome[randomIndex1]
+      #  tempChromosome[randomIndex1] = tempChromosome[randomIndex2]
+       # tempChromosome[randomIndex2] = tempGene
+        tempChromosome[randomIndex1] = 1
+        tempChromosome[randomIndex2] = 0
 
         return tempChromosome
 

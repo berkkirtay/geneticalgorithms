@@ -16,25 +16,26 @@ class TSPSampleContainer:
             self.TSPGraph.append([0] * self.graphSize)
             for j in range(self.graphSize):
                 if i != j:
-                    self.TSPGraph[i][j] = (random.randint(10, 150))
-        print("Generated Graph:")
+                    self.TSPGraph[i][j] = (random.randint(100, 100000))
+        print("Graph is generated..")
         for i in range(self.graphSize):
             print(self.TSPGraph[i])
 
     def generateRandomPath(self):
-        path = [0] * self.graphSize
+        path = [0] * (self.graphSize + 1)
         finishingNode = 0
         variablesList = [finishingNode]
+        path[0] = finishingNode
 
-        for i in range(self.graphSize - 1):
+        for i in range(1, self.graphSize):
             randVal = random.randint(1, self.graphSize - 1)
             while variablesList.__contains__(randVal) == True:
                 randVal = random.randint(1, self.graphSize - 1)
 
             path[i] = randVal
             variablesList.append(randVal)
-        path[-1] = finishingNode
 
+        path[-1] = finishingNode
         return path
 
     def fillPopulation(self):

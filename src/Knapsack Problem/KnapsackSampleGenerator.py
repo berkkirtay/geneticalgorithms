@@ -9,7 +9,7 @@ class KnapsackSampleContainer:
 
     def __init__(self, limit):
         self.limit = limit
-        self.maxWeight = limit * 10
+        self.maxWeight = limit * 100
         self.generateValues()
 
     def generateValues(self):
@@ -34,7 +34,6 @@ class KnapsackSampleContainer:
             currentWeight = self.getTotalWeight(newChromosome, self.weights)
             if currentWeight > self.maxWeight:
                 newChromosome[randomGene] = 0
-                break
 
         return newChromosome
 

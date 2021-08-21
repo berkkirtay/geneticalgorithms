@@ -42,7 +42,7 @@ class TSPGeneticAlgorithm():
 # good chromosomes into breeding loop and in every cycle
 # the chromosomes create new baby chromosomes. After each
 # breeding cycle we control if they are better from their
-# parents or not. If so, then we selec them for the next cycle.
+# parents or not. If so, then we select them for the next cycle.
 
 
 class Selection(TSPGeneticAlgorithm):
@@ -52,7 +52,7 @@ class Selection(TSPGeneticAlgorithm):
 
     def breedingLoop(self, chromosome1, chromosome2):
         iteration = 0
-        while iteration < 50000:
+        while iteration < 20000:
             temp1 = chromosome1.copy()
             temp2 = chromosome2.copy()
 
@@ -73,18 +73,16 @@ class Selection(TSPGeneticAlgorithm):
     def crossover(self, chromosome1, chromosome2):
         chromosomeLenght = len(chromosome1)
         for i in range(math.floor(chromosomeLenght / 2)):
-            randomIndex = random.randint(0, chromosomeLenght - 2)
+            randomIndex = random.randint(1, chromosomeLenght - 1)
             swapGenes(chromosome1, chromosome2, randomIndex)
 
-        chromosome1 = Mutation().igniteMutation(chromosome1)
-
-        chromosome2 = Mutation().igniteMutation(chromosome2)
+            chromosome1 = Mutation().igniteMutation(chromosome1)
+            chromosome2 = Mutation().igniteMutation(chromosome2)
 
         return chromosome1, chromosome2
 
     def selectiveBreeding(self, babyChromosome, chromosome):
         babyChromosomeScore = self.calculatePathWeight(babyChromosome)
-
         chromosomeScore = self.calculatePathWeight(chromosome)
 
         if babyChromosomeScore < chromosomeScore:
@@ -104,6 +102,7 @@ class Selection(TSPGeneticAlgorithm):
             self.bestChromosome = chromosome2
             self.bestScore = val2
 
+        # print(self.bestChromosome)
         print(f'{self.bestScore}')
 
 
@@ -125,8 +124,8 @@ class Mutation:
         tempChromosome = chromosome.copy()
         chromosomeLenght = len(tempChromosome)
 
-        randomIndex1 = random.randint(0, chromosomeLenght - 2)
-        randomIndex2 = random.randint(0, chromosomeLenght - 2)
+        randomIndex1 = random.randint(1, chromosomeLenght - 2)
+        randomIndex2 = random.randint(1, chromosomeLenght - 2)
 
         tempGene = tempChromosome[randomIndex1]
         tempChromosome[randomIndex1] = tempChromosome[randomIndex2]
@@ -134,8 +133,21 @@ class Mutation:
 
         return tempChromosome
 
+# This algorithm is a little weird but since it is trivial,
+# we can use any random swapping algorithm for this case.
+
 
 def swapGenes(chromosome1, chromosome2, index):
     tempGene = chromosome1[index]
     chromosome1[index] = chromosome2[index]
     chromosome2[index] = tempGene
+
+    tempGene = chromosome1[index]
+    for i in range(1, len(chromosome1) - 1):
+        if i != index and tempGene == chromosome1[i]:
+            tempGene = chromosome2[index]
+            for j in range(1, len(chromosome2) - 1):
+                if j != index and tempGene == chromosome2[j]:
+                    tempGene = chromosome1[i]
+                    chromosome1[i] = chromosome2[j]
+                    chromosome2[j] = tempGene

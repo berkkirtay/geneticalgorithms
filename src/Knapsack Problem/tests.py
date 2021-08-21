@@ -1,25 +1,34 @@
 from KnapsackSampleGenerator import *
 from KnapsackProblem import *
 from GreedyAlgorithm import *
+from DPSolution import *
 
 import matplotlib.pyplot as plt
 
 # Knapsack Problem Analysis
 
-#itemValues = [5, 100, 40, 35, 34, 92, 32, 36, 150, 77]
-#weights = [12, 219, 311, 122, 34, 53, 321, 12, 66, 190]
+# itemValues = [5, 100, 40, 35, 34, 92, 32, 36, 150, 77]
+# weights = [12, 219, 311, 122, 34, 53, 321, 12, 66, 190]
 
-sampleSize = 100
+sampleSize = 500
 newSample = KnapsackSampleContainer(sampleSize)
+
+print(f'Items: {newSample.itemValues}')
+print(f'Weights: {newSample.weights}')
 
 # Greedy Method for Knapsack Problem
 
 greedyMethod = KnapsackGreedyMethod(newSample)
 greedyMethod.process()
 
+# DP method gives the optimal solution
+
+DPMethod = KnapsackDP(newSample)
+DPMethod.process()
+
 
 def sortPopulationByScore(population, limit):
-    print("Population scores after greedy method.")
+    print("\nPopulation scores after greedy method.")
 
     populationScores = []
     for i in range(limit):
@@ -48,6 +57,7 @@ def validateGenes(weights, chromosome, maxWeight):
         totalWeight += weights[i] * chromosome[i]
 
     if totalWeight > maxWeight:
+        print("ERR")
         return False
 
     print(f"The best chromosomes weight is {totalWeight}")

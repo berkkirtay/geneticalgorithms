@@ -1,9 +1,15 @@
 from TravelingSalesmanProblem import *
+from TSPN import *
 
 # TSP Analysis
+testSample = TSPSampleContainer(5, 10)
 
-graph1 = TSPGeneticAlgorithm(TSPSampleContainer(5, 500))
+print(travellingSalesmanProblem(testSample))
+print("*******************")
+
+graph1 = TSPGeneticAlgorithm(testSample)
 graph1.process()
+print(f"Path: {graph1.bestChromosome}")
 
 x = []
 for i in range(len(graph1.paths)):

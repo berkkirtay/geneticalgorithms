@@ -1,5 +1,3 @@
-from KnapsackSampleGenerator import *
-
 
 class KnapsackGreedyMethod:
     greedyChromosome = []
