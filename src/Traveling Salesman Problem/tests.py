@@ -1,11 +1,7 @@
 from TravelingSalesmanProblem import *
-from TSPN import *
 
 # TSP Analysis
-testSample = TSPSampleContainer(5, 10)
-
-print(travellingSalesmanProblem(testSample))
-print("*******************")
+testSample = TSPSampleContainer(5, 500)
 
 graph1 = TSPGeneticAlgorithm(testSample)
 graph1.process()

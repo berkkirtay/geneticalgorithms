@@ -7,10 +7,10 @@ In this project, I tried to apply selective breeding principle to my program. Th
 - Selection rules, mutation rates and breeding cycles can be changed.  
 - Moreover, you can observe the analysis of these solutions in test scripts. 
 
-### TSP with 500 cities and 50000 breeding cycles
+### TSP with 500 cities and 5000 breeding cycles
 
 ![Enc1](https://raw.githubusercontent.com/berkkirtay/geneticalgorithms/main/examples/TSP.PNG)
 
-### Knapsack with 100 items and 20000 breeding cycles
+### Knapsack problem with 500 items and 10000 breeding cycles
 
 ![Enc1](https://raw.githubusercontent.com/berkkirtay/geneticalgorithms/main/examples/Knapsack.PNG)

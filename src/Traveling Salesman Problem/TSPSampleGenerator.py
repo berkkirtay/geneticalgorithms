@@ -16,7 +16,7 @@ class TSPSampleContainer:
             self.TSPGraph.append([0] * self.graphSize)
             for j in range(self.graphSize):
                 if i != j:
-                    self.TSPGraph[i][j] = (random.randint(100, 100000))
+                    self.TSPGraph[i][j] = (random.randint(10, 100000000))
         print("Graph is generated..")
         for i in range(self.graphSize):
             print(self.TSPGraph[i])
